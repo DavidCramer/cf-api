@@ -38,9 +38,6 @@ class CF_API_Unit_Tests_Bootstrap {
 		// load CF_API
 		tests_add_filter( 'muplugins_loaded', array( $this, 'load_cf_api' ) );
 
-		// install CF_API
-		tests_add_filter( 'setup_theme', array( $this, 'install_cf_api' ) );
-
 		// load the WP testing environment
 		require_once( $this->wp_tests_dir . '/includes/bootstrap.php' );
 
@@ -57,25 +54,6 @@ class CF_API_Unit_Tests_Bootstrap {
 		require_once( $this->plugin_dir . '/caldera-forms-api.php' );
 	}
 
-	/**
-	 * Install CF_API after the test environment and CF_API have been loaded.
-	 *
-	 * @since 1.3.2
-	 */
-	public function install_cf_api() {
-
-		// clean existing install first
-		define( 'WP_UNINSTALL_PLUGIN', true );
-		include( $this->plugin_dir . '/uninstall.php' );
-
-		echo "Installing CF_API..." . PHP_EOL;
-
-		cf_api_install();
-
-		// reload capabilities after install, see https://core.trac.wordpress.org/ticket/28374
-		$GLOBALS['wp_roles']->reinit();
-		
-	}
 
 	/**
 	 * Load CF_API-specific test cases
