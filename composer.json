@@ -1,0 +1,25 @@
+{
+    "name": "calderawp/caldera-forms-api",
+    "description": "API Endpoints for Caldera Forms",
+    "type": "wordpress-plugin",
+    "keywords": [
+        "wordpress"
+    ],
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "David Cramer",
+            "homepage": "https://calderawp.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "calderawp/dismissible-notice": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "calderawp\\cf_api\\": "classes"
+        }
+    }
+}
